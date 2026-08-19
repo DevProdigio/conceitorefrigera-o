@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Conceito Climatização e Elétrica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-950:#081521;
+    --navy-900:#0E2438;
+    --navy-850:#122C44;
+    --navy-800:#16324B;
+    --navy-700:#1F4262;
+    --navy-600:#2C5A82;
+    --amber-500:#F3A83B;
+    --amber-400:#F7BE64;
+    --amber-600:#D98A1E;
+    --amber-glow:rgba(243,168,59,.35);
+    --frost-300:#BFE6F2;
+    --frost-500:#7EC8DE;
+    --white:#F6F8FA;
+    --muted:#9FB3C8;
+    --muted-dim:#71879e;
+    --line:rgba(159,179,200,.14);
+    --display:'Barlow Condensed',sans-serif;
+    --body:'Inter',sans-serif;
+    --mono:'JetBrains Mono',monospace;
+    --ease:cubic-bezier(.22,1,.36,1);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--navy-900);
+    color:var(--white);
+    font-family:var(--body);
+    line-height:1.6;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  img,svg{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+  input,textarea,select{font-family:inherit;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important;}
+  }
+
+  ::selection{background:var(--amber-500);color:var(--navy-950);}
+
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:12.5px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--amber-400);
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:'';
+    width:22px;height:1px;
+    background:var(--amber-400);
+    display:inline-block;
+  }
+  h1,h2,h3,h4{
+    font-family:var(--display);
+    font-weight:800;
+    letter-spacing:.01em;
+    line-height:1.02;
+    text-transform:uppercase;
+  }
+  h2{font-size:clamp(34px,4.4vw,54px);}
+  h3{font-size:clamp(20px,2.2vw,26px);}
+  p{color:var(--muted);}
+  .section-head{max-width:640px;margin-bottom:56px;}
+  .section-head h2{margin-top:14px;color:var(--white);}
+  .section-head p{margin-top:16px;font-size:17px;}
+  section{position:relative;padding:110px 0;}
+
+  /* ---------- BUTTONS ---------- */
+  .btn{
+    position:relative;
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:15px 28px;
+    font-family:var(--display);
+    font-weight:700;
+    font-size:16px;
+    letter-spacing:.04em;
+    text-transform:uppercase;
+    border-radius:6px;
+    overflow:hidden;
+    transition:transform .35s var(--ease),box-shadow .35s var(--ease);
+    white-space:nowrap;
+  }
+  .btn-primary{
+    background:var(--amber-500);
+    color:var(--navy-950);
+  }
+  .btn-primary::after{
+    content:'';
+    position:absolute;inset:0;
+    background:linear-gradient(115deg,transparent 20%,rgba(255,255,255,.55) 45%,transparent 70%);
+    transform:translateX(-120%);
+  }
+  .btn-primary:hover::after{transform:translateX(120%);transition:transform .8s var(--ease);}
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 30px -8px var(--amber-glow);}
+  .btn-ghost{
+    border:1px solid var(--navy-600);
+    color:var(--white);
+    background:rgba(255,255,255,.02);
+  }
+  .btn-ghost:hover{
+    border-color:var(--amber-500);
+    color:var(--amber-400);
+    transform:translateY(-3px);
+  }
+  .btn-ghost svg{transition:transform .35s var(--ease);}
+  .btn-ghost:hover svg{transform:translate(3px,-3px);}
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed;top:0;left:0;right:0;
+    z-index:100;
+    padding:22px 0;
+    transition:background .4s var(--ease),padding .4s var(--ease),border-color .4s var(--ease);
+    border-bottom:1px solid transparent;
+  }
+  header.scrolled{
+    padding:14px 0;
+    background:rgba(10,26,41,.85);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{display:flex;align-items:center;justify-content:space-between;}
+  .logo{display:flex;align-items:center;gap:12px;}
+  .logo-hex{width:42px;height:42px;flex-shrink:0;}
+  .logo-text{font-family:var(--display);line-height:1;}
+  .logo-text .l1{
+    display:block;font-size:20px;font-weight:800;letter-spacing:.03em;
+    color:var(--amber-400);text-transform:uppercase;
+  }
+  .logo-text .l2{
+    display:block;font-size:10.5px;font-weight:600;letter-spacing:.12em;
+    color:var(--muted);text-transform:uppercase;margin-top:2px;
+  }
+  .nav-links{display:flex;align-items:center;gap:34px;}
+  .nav-links a{
+    position:relative;
+    font-size:14.5px;font-weight:500;color:var(--muted);
+    padding:6px 0;transition:color .3s;
+  }
+  .nav-links a::after{
+    content:'';position:absolute;left:0;bottom:0;height:1.5px;width:0;
+    background:var(--amber-500);transition:width .35s var(--ease);
+  }
+  .nav-links a:hover{color:var(--white);}
+  .nav-links a:hover::after{width:100%;}
+  .nav-cta{display:flex;align-items:center;gap:22px;}
+  .burger{display:none;width:26px;height:20px;position:relative;z-index:200;}
+  .burger span{
+    position:absolute;left:0;width:100%;height:2px;background:var(--white);
+    transition:transform .35s var(--ease),opacity .3s;
+  }
+  .burger span:nth-child(1){top:0;}
+  .burger span:nth-child(2){top:9px;}
+  .burger span:nth-child(3){top:18px;}
+  .burger.open span:nth-child(1){transform:translateY(9px) rotate(45deg);}
+  .burger.open span:nth-child(2){opacity:0;}
+  .burger.open span:nth-child(3){transform:translateY(-9px) rotate(-45deg);}
+
+  .mobile-menu{
+    position:fixed;inset:0;background:var(--navy-950);
+    z-index:150;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:30px;
+    transform:translateY(-100%);transition:transform .5s var(--ease);
+  }
+  .mobile-menu.open{transform:translateY(0);}
+  .mobile-menu a{
+    font-family:var(--display);font-size:34px;font-weight:700;
+    text-transform:uppercase;color:var(--white);
+    opacity:0;transform:translateY(16px);
+    transition:opacity .5s var(--ease),transform .5s var(--ease);
+  }
+  .mobile-menu.open a{opacity:1;transform:translateY(0);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;align-items:center;
+    padding-top:120px;
+    overflow:hidden;
+    background:
+      radial-gradient(circle at 82% 18%,rgba(243,168,59,.14),transparent 45%),
+      radial-gradient(circle at 12% 82%,rgba(126,200,222,.10),transparent 40%),
+      linear-gradient(180deg,var(--navy-950) 0%,var(--navy-900) 60%,var(--navy-900) 100%);
+  }
+  #circuit-canvas{position:absolute;inset:0;width:100%;height:100%;opacity:.55;}
+  .hero-glow{
+    position:absolute;width:520px;height:520px;border-radius:50%;
+    background:radial-gradient(circle,var(--amber-glow),transparent 70%);
+    pointer-events:none;filter:blur(10px);
+    transform:translate(-50%,-50%);
+    left:var(--mx,50%);top:var(--my,30%);
+    transition:left .25s linear,top .25s linear;
+    z-index:1;
+  }
+  .hero-inner{position:relative;z-index:2;width:100%;display:grid;grid-template-columns:1.2fr .8fr;gap:60px;align-items:center;}
+  .hero-copy h1{
+    margin-top:20px;font-size:clamp(44px,6.3vw,84px);color:var(--white);
+  }
+  .hero-copy h1 .accent{color:var(--amber-500);}
+  .hero-copy p{margin-top:22px;font-size:18px;max-width:480px;}
+  .hero-actions{display:flex;gap:16px;margin-top:38px;flex-wrap:wrap;}
+  .hero-meta{
+    display:flex;gap:34px;margin-top:56px;padding-top:30px;border-top:1px solid var(--line);
+  }
+  .hero-meta div{display:flex;flex-direction:column;}
+  .hero-meta strong{font-family:var(--display);font-size:30px;color:var(--amber-400);letter-spacing:.02em;}
+  .hero-meta span{font-size:12.5px;color:var(--muted-dim);text-transform:uppercase;letter-spacing:.06em;margin-top:2px;}
+
+  .hero-visual{position:relative;display:flex;align-items:center;justify-content:center;}
+  .hex-frame{width:100%;max-width:420px;position:relative;}
+  .hex-frame svg{width:100%;height:auto;}
+  .hex-outline{
+    stroke:var(--amber-500);stroke-width:2.2;fill:none;
+    stroke-dasharray:900;stroke-dashoffset:900;
+    animation:draw 2.2s var(--ease) forwards .2s;
+  }
+  .hex-fill{fill:var(--navy-850);opacity:0;animation:fadein .8s var(--ease) forwards 1.4s;}
+  .icon-snow path{
+    stroke:var(--frost-300);stroke-width:5;stroke-linecap:round;fill:none;
+    stroke-dasharray:120;stroke-dashoffset:120;
+    animation:draw .9s var(--ease) forwards;
+  }
+  .icon-snow path:nth-child(1){animation-delay:1.6s;}
+  .icon-snow path:nth-child(2){animation-delay:1.7s;}
+  .icon-snow path:nth-child(3){animation-delay:1.8s;}
+  .icon-bolt{
+    fill:var(--amber-500);opacity:0;transform-origin:center;
+    animation:boltpop .6s var(--ease) forwards 2.1s;
+  }
+  @keyframes draw{to{stroke-dashoffset:0;}}
+  @keyframes fadein{to{opacity:1;}}
+  @keyframes boltpop{
+    0%{opacity:0;transform:scale(.6) translateY(6px);}
+    60%{opacity:1;transform:scale(1.08) translateY(0);}
+    100%{opacity:1;transform:scale(1) translateY(0);}
+  }
+  .orbit-ring{
+    position:absolute;inset:-40px;border:1px dashed var(--navy-700);
+    border-radius:50%;animation:spin 40s linear infinite;
+  }
+  .orbit-dot{
+    position:absolute;width:8px;height:8px;border-radius:50%;background:var(--amber-500);
+    top:-4px;left:50%;box-shadow:0 0 12px 2px var(--amber-glow);
+  }
+  @keyframes spin{to{transform:rotate(360deg);}}
+
+  /* Logo dentro do hexágono: mesmo espaço/anel giratório da animação original */
+  .hero-logo-slot{
+    position:absolute;
+    top:45%;left:50%;
+    transform:translate(-50%,-50%);
+    width:70%;
+    aspect-ratio:1/1;
+    display:flex;align-items:center;justify-content:center;
+    opacity:0;
+    animation:fadein .9s var(--ease) forwards 1.6s;
+    pointer-events:none;
+  }
+  .hero-logo-slot img{
+    width:100%;height:100%;
+    object-fit:contain;
+    filter:drop-shadow(0 8px 24px rgba(0,0,0,.35));
+  }
+
+  .scroll-cue{
+    position:absolute;bottom:34px;left:50%;transform:translateX(-50%);
+    display:flex;flex-direction:column;align-items:center;gap:8px;
+    color:var(--muted-dim);font-family:var(--mono);font-size:11px;
+    letter-spacing:.12em;text-transform:uppercase;z-index:2;
+  }
+  .scroll-cue .line{width:1px;height:36px;background:linear-gradient(var(--muted-dim),transparent);position:relative;overflow:hidden;}
+  .scroll-cue .line::after{
+    content:'';position:absolute;top:-36px;left:0;width:100%;height:36px;
+    background:linear-gradient(var(--amber-500),transparent);
+    animation:scrolldrop 2s ease-in-out infinite;
+  }
+  @keyframes scrolldrop{to{top:36px;}}
+
+  /* ---------- MARQUEE ---------- */
+  .marquee-strip{
+    background:var(--amber-500);color:var(--navy-950);
+    padding:14px 0;overflow:hidden;white-space:nowrap;position:relative;
+  }
+  .marquee-track{display:inline-flex;gap:0;animation:scroll-left 28s linear infinite;}
+  .marquee-track span{
+    font-family:var(--display);font-weight:800;font-size:17px;
+    text-transform:uppercase;letter-spacing:.05em;padding:0 24px;
+    display:inline-flex;align-items:center;gap:24px;
+  }
+  .marquee-track span::after{content:'◆';font-size:11px;opacity:.55;}
+  @keyframes scroll-left{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+  /* ---------- REVEAL ---------- */
+  .reveal{opacity:0;transform:translateY(34px);transition:opacity .8s var(--ease),transform .8s var(--ease);}
+  .reveal.in-view{opacity:1;transform:translateY(0);}
+  .stagger .reveal:nth-child(1){transition-delay:.05s;}
+  .stagger .reveal:nth-child(2){transition-delay:.15s;}
+  .stagger .reveal:nth-child(3){transition-delay:.25s;}
+  .stagger .reveal:nth-child(4){transition-delay:.35s;}
+  .stagger .reveal:nth-child(5){transition-delay:.45s;}
+  .stagger .reveal:nth-child(6){transition-delay:.55s;}
+  .stagger .reveal:nth-child(7){transition-delay:.65s;}
+  .stagger .reveal:nth-child(8){transition-delay:.75s;}
+
+  /* ---------- SERVICES ---------- */
+  .services{background:var(--navy-900);}
+  .service-tabs{display:flex;gap:10px;margin-bottom:44px;}
+  .tab-btn{
+    padding:11px 22px;border-radius:999px;border:1px solid var(--navy-700);
+    font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:.03em;
+    text-transform:uppercase;color:var(--muted);transition:all .35s var(--ease);
+  }
+  .tab-btn.active{background:var(--amber-500);color:var(--navy-950);border-color:var(--amber-500);}
+  .tab-btn:not(.active):hover{border-color:var(--amber-500);color:var(--amber-400);}
+
+  .service-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .service-panel{display:none;}
+  .service-panel.active{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .s-card{
+    background:var(--navy-850);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:30px 24px;
+    position:relative;overflow:hidden;
+    transition:transform .45s var(--ease),border-color .45s var(--ease),background .45s var(--ease);
+  }
+  .s-card::before{
+    content:'';position:absolute;top:-60%;right:-60%;width:200%;height:200%;
+    background:radial-gradient(circle,var(--amber-glow),transparent 60%);
+    opacity:0;transition:opacity .5s var(--ease);
+  }
+  .s-card:hover{transform:translateY(-8px);border-color:var(--amber-500);background:var(--navy-800);}
+  .s-card:hover::before{opacity:1;}
+  .s-icon{
+    width:56px;height:56px;
+    clip-path:polygon(25% 5%,75% 5%,100% 50%,75% 95%,25% 95%,0% 50%);
+    background:var(--navy-700);
+    display:flex;align-items:center;justify-content:center;
+    margin-bottom:22px;transition:background .4s var(--ease),transform .4s var(--ease);
+    position:relative;z-index:1;
+  }
+  .s-card:hover .s-icon{background:var(--amber-500);transform:rotate(8deg) scale(1.05);}
+  .s-icon svg{width:26px;height:26px;stroke:var(--amber-400);transition:stroke .4s;}
+  .s-card:hover .s-icon svg{stroke:var(--navy-950);}
+  .s-card h4{position:relative;z-index:1;font-size:19px;color:var(--white);text-transform:none;letter-spacing:0;font-weight:700;margin-bottom:10px;}
+  .s-card p{position:relative;z-index:1;font-size:14.5px;color:var(--muted-dim);}
+
+  /* ---------- DIFERENCIAIS / STATS ---------- */
+  .stats-band{
+    background:var(--navy-850);
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  }
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);}
+  .stat-item{
+    padding:56px 30px;text-align:center;border-right:1px solid var(--line);
+  }
+  .stat-item:last-child{border-right:none;}
+  .stat-num{
+    font-family:var(--display);font-weight:800;font-size:clamp(38px,4.5vw,58px);
+    color:var(--amber-400);letter-spacing:.01em;
+    display:flex;align-items:baseline;justify-content:center;gap:4px;
+  }
+  .stat-label{margin-top:8px;font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;}
+
+  .why{padding:120px 0;}
+  .why-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:center;}
+  .why-list{display:flex;flex-direction:column;gap:0;}
+  .why-item{
+    display:flex;gap:20px;padding:26px 0;border-bottom:1px solid var(--line);
+  }
+  .why-item:first-child{padding-top:0;}
+  .why-num{
+    font-family:var(--mono);color:var(--amber-500);font-size:14px;padding-top:4px;flex-shrink:0;width:32px;
+  }
+  .why-item h4{font-family:var(--body);font-weight:700;font-size:17px;color:var(--white);text-transform:none;letter-spacing:0;}
+  .why-item p{margin-top:6px;font-size:14.5px;}
+
+  .why-visual{
+    position:relative;aspect-ratio:1/1;
+    border-radius:18px;overflow:hidden;
+    background:linear-gradient(155deg,var(--navy-850),var(--navy-950));
+    border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .badge-hex{position:relative;width:220px;height:220px;}
+  .badge-hex svg{width:100%;height:100%;animation:pulse-hex 4s ease-in-out infinite;}
+  @keyframes pulse-hex{0%,100%{filter:drop-shadow(0 0 0px var(--amber-glow));}50%{filter:drop-shadow(0 0 22px var(--amber-glow));}}
+  .float-chip{
+    position:absolute;background:var(--navy-900);border:1px solid var(--navy-700);
+    border-radius:10px;padding:10px 16px;font-family:var(--mono);font-size:12.5px;
+    display:flex;align-items:center;gap:8px;color:var(--frost-300);
+    animation:float 5s ease-in-out infinite;
+  }
+  .float-chip.c1{top:12%;left:8%;animation-delay:.2s;}
+  .float-chip.c2{bottom:16%;right:6%;animation-delay:1.1s;color:var(--amber-400);}
+  .float-chip.c3{bottom:8%;left:14%;animation-delay:2s;}
+  @keyframes float{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+  .float-chip .dot{width:6px;height:6px;border-radius:50%;background:currentColor;box-shadow:0 0 8px currentColor;}
+
+  /* ---------- PROCESS ---------- */
+  .process{background:var(--navy-950);}
+  .process-track{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:20px;}
+  .process-track::before{
+    content:'';position:absolute;top:34px;left:8%;right:8%;height:1px;
+    background:var(--navy-700);
+  }
+  .process-line{
+    position:absolute;top:34px;left:8%;height:1px;background:var(--amber-500);
+    width:0;transition:width 1.4s var(--ease);
+  }
+  .process-track.in-view .process-line{width:84%;}
+  .p-step{position:relative;text-align:left;}
+  .p-circle{
+    width:68px;height:68px;border-radius:50%;
+    background:var(--navy-900);border:1px solid var(--navy-700);
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--display);font-weight:800;font-size:22px;color:var(--amber-500);
+    margin-bottom:26px;position:relative;z-index:1;
+    transition:border-color .5s var(--ease),background .5s var(--ease),transform .5s var(--ease);
+  }
+  .process-track.in-view .p-step:nth-child(1) .p-circle{transition-delay:.1s;}
+  .process-track.in-view .p-step:nth-child(2) .p-circle{transition-delay:.7s;}
+  .process-track.in-view .p-step:nth-child(3) .p-circle{transition-delay:1.3s;}
+  .process-track.in-view .p-circle{background:var(--amber-500);color:var(--navy-950);transform:scale(1.05);}
+  .p-step h4{font-size:18px;color:var(--white);text-transform:none;letter-spacing:0;font-weight:700;margin-bottom:10px;}
+  .p-step p{font-size:14.5px;}
+
+  /* ---------- TESTIMONIALS ---------- */
+  .testimonials{background:var(--navy-850);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .t-slider{position:relative;max-width:760px;margin:0 auto;text-align:center;min-height:260px;}
+  .t-slide{
+    position:absolute;inset:0;opacity:0;transform:translateY(14px);
+    transition:opacity .6s var(--ease),transform .6s var(--ease);
+    pointer-events:none;
+  }
+  .t-slide.active{opacity:1;transform:translateY(0);pointer-events:auto;}
+  .t-stars{display:flex;justify-content:center;gap:4px;margin-bottom:22px;}
+  .t-stars svg{width:18px;height:18px;fill:var(--amber-500);}
+  .t-quote{font-family:var(--display);font-size:clamp(20px,2.4vw,28px);font-weight:600;color:var(--white);text-transform:none;letter-spacing:0;line-height:1.35;}
+  .t-author{margin-top:24px;font-size:14px;color:var(--muted);}
+  .t-author strong{color:var(--amber-400);font-weight:600;}
+  .t-dots{display:flex;justify-content:center;gap:10px;margin-top:40px;}
+  .t-dots button{width:9px;height:9px;border-radius:50%;background:var(--navy-700);transition:all .35s var(--ease);}
+  .t-dots button.active{background:var(--amber-500);width:26px;border-radius:5px;}
+
+  /* ---------- COVERAGE ---------- */
+  .coverage-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+  .coverage-map{
+    position:relative;aspect-ratio:4/3;border-radius:18px;
+    background:var(--navy-850);border:1px solid var(--line);overflow:hidden;
+  }
+  .coverage-map svg{width:100%;height:100%;}
+  .map-pulse{transform-origin:center;animation:mappulse 2.4s ease-out infinite;}
+  @keyframes mappulse{0%{r:4;opacity:1;}100%{r:34;opacity:0;}}
+  .coverage-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;}
+  .coverage-list span{
+    padding:8px 16px;border-radius:999px;border:1px solid var(--navy-700);
+    font-size:13px;color:var(--muted);font-family:var(--mono);
+  }
+
+  /* ---------- CONTACT ---------- */
+  .contact{background:linear-gradient(180deg,var(--navy-950),var(--navy-900));}
+  .contact-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:60px;}
+  .contact-info h2{color:var(--white);}
+  .contact-info p{margin-top:18px;font-size:16px;max-width:400px;}
+  .contact-channels{margin-top:36px;display:flex;flex-direction:column;gap:18px;}
+  .channel{display:flex;align-items:center;gap:16px;}
+  .channel-icon{
+    width:46px;height:46px;border-radius:50%;background:var(--navy-850);
+    border:1px solid var(--navy-700);display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  }
+  .channel-icon svg{width:19px;height:19px;stroke:var(--amber-400);}
+  .channel strong{display:block;font-size:14.5px;color:var(--white);}
+  .channel span{font-size:13.5px;color:var(--muted-dim);}
+
+  .form-card{
+    background:var(--navy-850);border:1px solid var(--line);border-radius:18px;padding:44px;
+  }
+  .form-row{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+  .field{margin-bottom:20px;position:relative;}
+  .field label{
+    display:block;font-size:12.5px;text-transform:uppercase;letter-spacing:.06em;
+    color:var(--muted-dim);margin-bottom:8px;
+  }
+  .field input,.field select,.field textarea{
+    width:100%;background:var(--navy-900);border:1px solid var(--navy-700);
+    border-radius:8px;padding:13px 14px;color:var(--white);font-size:14.5px;
+    transition:border-color .3s var(--ease),box-shadow .3s var(--ease);
+  }
+  .field textarea{resize:vertical;min-height:100px;}
+  .field input:focus,.field select:focus,.field textarea:focus{
+    outline:none;border-color:var(--amber-500);box-shadow:0 0 0 3px rgba(243,168,59,.15);
+  }
+  .submit-btn{width:100%;justify-content:center;margin-top:6px;position:relative;}
+  .submit-btn .default-state{display:flex;align-items:center;gap:10px;}
+  .submit-btn.loading .default-state{visibility:hidden;}
+  .submit-btn .spinner{
+    display:none;position:absolute;left:50%;top:50%;width:18px;height:18px;
+    margin:-9px 0 0 -9px;border:2px solid rgba(8,21,33,.3);border-top-color:var(--navy-950);
+    border-radius:50%;
+  }
+  .submit-btn.loading .spinner{display:block;animation:spin .7s linear infinite;}
+  .submit-success{
+    display:none;align-items:center;gap:10px;margin-top:16px;padding:14px 16px;
+    background:rgba(126,200,222,.1);border:1px solid var(--frost-500);border-radius:8px;
+    color:var(--frost-300);font-size:14px;
+  }
+  .submit-success.show{display:flex;animation:fadein .5s var(--ease) forwards;}
+  .submit-success svg{width:18px;height:18px;stroke:var(--frost-300);flex-shrink:0;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--navy-950);border-top:1px solid var(--line);padding:70px 0 30px;}
+  .footer-top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:50px;padding-bottom:50px;border-bottom:1px solid var(--line);}
+  .footer-brand p{margin-top:16px;font-size:14px;max-width:280px;}
+  .footer-col h4{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:18px;}
+  .footer-col ul{display:flex;flex-direction:column;gap:12px;}
+  .footer-col a{font-size:14px;color:var(--muted-dim);transition:color .3s;}
+  .footer-col a:hover{color:var(--amber-400);}
+  .footer-social{display:flex;gap:10px;margin-top:20px;}
+  .footer-social a{
+    width:38px;height:38px;border-radius:50%;border:1px solid var(--navy-700);
+    display:flex;align-items:center;justify-content:center;transition:all .3s var(--ease);
+  }
+  .footer-social a:hover{background:var(--amber-500);border-color:var(--amber-500);transform:translateY(-3px);}
+  .footer-social svg{width:16px;height:16px;stroke:var(--muted);transition:stroke .3s;}
+  .footer-social a:hover svg{stroke:var(--navy-950);}
+  .footer-bottom{
+    display:flex;justify-content:space-between;align-items:center;padding-top:26px;
+    font-size:12.5px;color:var(--muted-dim);flex-wrap:wrap;gap:12px;
+  }
+
+  /* ---------- WHATSAPP FLOAT ---------- */
+  .wa-float{
+    position:fixed;bottom:26px;right:26px;z-index:90;
+    width:60px;height:60px;border-radius:50%;
+    background:#25D366;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 8px 24px rgba(0,0,0,.35);
+    transform:scale(0);transition:transform .4s var(--ease);
+  }
+  .wa-float.show{transform:scale(1);}
+  .wa-float::before{
+    content:'';position:absolute;inset:0;border-radius:50%;background:#25D366;
+    animation:wa-pulse 2.4s ease-out infinite;
+  }
+  @keyframes wa-pulse{0%{transform:scale(1);opacity:.6;}100%{transform:scale(1.8);opacity:0;}}
+  .wa-float svg{width:28px;height:28px;fill:#fff;position:relative;z-index:1;}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:980px){
+    .hero-inner{grid-template-columns:1fr;}
+    .hero-visual{order:-1;max-width:280px;margin:0 auto 20px;}
+    .service-panel.active{grid-template-columns:repeat(2,1fr);}
+    .stats-grid{grid-template-columns:repeat(2,1fr);}
+    .stat-item:nth-child(2n){border-right:none;}
+    .stat-item{border-bottom:1px solid var(--line);}
+    .why-grid,.coverage-grid,.contact-grid{grid-template-columns:1fr;}
+    .why-visual{order:-1;max-width:340px;margin:0 auto;}
+    .process-track{grid-template-columns:1fr;gap:34px;}
+    .process-track::before,.process-line{display:none;}
+    .footer-top{grid-template-columns:1fr 1fr;gap:36px;}
+    .nav-links{display:none;}
+    .nav-cta .btn-primary{display:none;}
+    .burger{display:block;}
+  }
+  @media (max-width:640px){
+    section{padding:80px 0;}
+    .form-row{grid-template-columns:1fr;}
+    .service-panel.active{grid-template-columns:1fr;}
+    .footer-top{grid-template-columns:1fr;gap:34px;}
+    .hero-meta{gap:22px;flex-wrap:wrap;}
+    .service-tabs{flex-wrap:wrap;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header id="site-header">
+  <div class="wrap">
+    <nav>
+      <a href="#top" class="logo">
+        <svg class="logo-hex" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="50,4 90,27 90,73 50,96 10,73 10,27" fill="none" stroke="#F3A83B" stroke-width="5"/>
+          <path d="M32 40 V60 M24 45 L40 55 M40 45 L24 55" stroke="#BFE6F2" stroke-width="4.5" stroke-linecap="round"/>
+          <polygon points="60,32 47,58 57,58 50,74 70,48 58,48" fill="#F3A83B"/>
+        </svg>
+        <span class="logo-text">
+          <span class="l1">Conceito</span>
+          <span class="l2">Climatização &amp; Elétrica</span>
+        </span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#servicos">Serviços</a></li>
+        <li><a href="#diferenciais">Diferenciais</a></li>
+        <li><a href="#processo">Como trabalhamos</a></li>
+        <li><a href="#depoimentos">Depoimentos</a></li>
+        <li><a href="#atendimento">Área de atendimento</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="#contato" class="btn btn-primary">Solicitar orçamento</a>
+        <div class="burger" id="burger"><span></span><span></span><span></span></div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#servicos">Serviços</a>
+  <a href="#diferenciais">Diferenciais</a>
+  <a href="#processo">Como trabalhamos</a>
+  <a href="#depoimentos">Depoimentos</a>
+  <a href="#atendimento">Área de atendimento</a>
+  <a href="#contato">Contato</a>
+</div>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="top">
+  <canvas id="circuit-canvas"></canvas>
+  <div class="hero-glow" id="heroGlow"></div>
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <span class="eyebrow">Climatização &amp; Instalações Elétricas</span>
+      <h1>Clima sob controle.<br>Energia com <span class="accent">segurança.</span></h1>
+      <p>A Conceito une refrigeração e elétrica num único padrão de qualidade: diagnóstico técnico, execução precisa e garantia real em cada serviço — para sua casa ou sua empresa.</p>
+      <div class="hero-actions">
+        <a href="#contato" class="btn btn-primary">
+          Solicitar orçamento
+        </a>
+        <a href="#servicos" class="btn btn-ghost">
+          Ver serviços
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H9M17 7V15"/></svg>
+        </a>
+      </div>
+      <div class="hero-meta">
+        <div><strong>10+</strong><span>Anos de atuação</span></div>
+        <div><strong>1.200+</strong><span>Instalações entregues</span></div>
+        <div><strong>4.9</strong><span>Avaliação média</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="orbit-ring"><div class="orbit-dot"></div></div>
+      <div class="hex-frame">
+        <svg viewBox="0 0 400 460" xmlns="http://www.w3.org/2000/svg">
+          <polygon class="hex-fill" points="200,20 360,110 360,290 200,380 40,290 40,110" />
+          <polygon class="hex-outline" points="200,20 360,110 360,290 200,380 40,290 40,110" />
+        </svg>
+        <!-- Espaço reservado para a logo, com a mesma animação de fade/anel giratório -->
+        <div class="hero-logo-slot">
+          <img src="assets/logo.png" alt="Conceito Climatização e Elétrica">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-cue"><span>Role para descobrir</span><div class="line"></div></div>
+</section>
+
+<!-- ================= MARQUEE ================= -->
+<div class="marquee-strip">
+  <div class="marquee-track" id="marqueeTrack">
+    <span>Técnicos Certificados</span><span>Garantia em Todos os Serviços</span><span>Conforme NBR 5410</span><span>Atendimento Residencial e Comercial</span><span>Orçamento sem Compromisso</span>
+    <span>Técnicos Certificados</span><span>Garantia em Todos os Serviços</span><span>Conforme NBR 5410</span><span>Atendimento Residencial e Comercial</span><span>Orçamento sem Compromisso</span>
+  </div>
+</div>
+
+<!-- ================= SERVICES ================= -->
+<section class="services" id="servicos">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">O que fazemos</span>
+      <h2>Dois times.<br>Um único padrão.</h2>
+      <p>Escolha a frente que você precisa — nossas equipes de climatização e elétrica trabalham com o mesmo rigor técnico e a mesma garantia.</p>
+    </div>
+
+    <div class="service-tabs reveal">
+      <button class="tab-btn active" data-tab="clima">Climatização</button>
+      <button class="tab-btn" data-tab="eletrica">Elétrica</button>
+    </div>
+
+    <div class="service-panel active" data-panel="clima">
+      <div class="s-card reveal">
+        <div class="s-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M4.5 6L19.5 18M19.5 6L4.5 18"/></svg></div>
+        <h4>Instalação de Ar-Condicionado</h4>
+        <p>Split, Multi Split, VRF e cassete — instalação técnica com teste de vácuo e carga de gás precisa.</p>
+      </div>
+      <div class="s-card reveal">
+        <div class="s-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M2 12h20M5 5l14 14M19 5L5 19"/></svg></div>
+        <h4>Manutenção Preventiva</h4>
+        <p>Revisões periódicas que evitam quebras, reduzem o consumo de energia e prolongam a vida útil do equipamento.</p>
+      </div>
+      <div class="s-card reveal">
+        <div class="s-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 4h16v6H4zM4 14h10v6H4zM17 14v6M20 17h-6"/></svg></div>
+        <h4>Higienização Completa</h4>
+        <p>Limpeza de filtros, serpentina e dreno — mais qualidade do ar e economia comprovada na conta de luz.</p>
+      </div>
+      <div class="s-card reveal">
+        <div class="s-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 3a9 9 0 100 18 9 9 0 000-18zM12 7v5l3 3"/></svg></div>
+        <h4>Recarga de Gás Refrigerante</h4>
+        <p>Diagnóstico de vazamento e recarga precisa para restaurar o desempenho total do climatizador.</p>
+      </div>
+    </div>
+
+    <div class="service-panel" data-panel="eletrica">
+      <div class="s-card reveal">
+        <div class="s-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg></div>
+        <h4>Instalação Elétrica Completa</h4>
+        <p>Projetos residenciais e comerciais do zero, com dimensionamento correto de carga e segurança elétrica.</p>
+      </div>
+      <div class="s-card reveal">
+        <div class="s-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 8h16M4 16h16M8 4v4M16 4v4M8 16v4M16 16v4"/></svg></div>
+        <h4>Padrões e Quadros de Distribuição</h4>
+        <p>Padrão de entrada, disjuntores e quadros dimensionados conforme as normas da concessionária local.</p>
+      </div>
+      <div class="s-card reveal">
+        <div class="s-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M9 18h6M10 22h4M12 2a7 7 0 00-4 12.7V17h8v-2.3A7 7 0 0012 2z"/></svg></div>
+        <h4>Iluminação e Automação</h4>
+        <p>Projetos de iluminação, dimerização e automação residencial para conforto e eficiência energética.</p>
+      </div>
+      <div class="s-card reveal">
+        <div class="s-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M9 12l2 2 4-4M12 3l8 4v5c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V7z"/></svg></div>
+        <h4>Laudos e Adequação Normativa</h4>
+        <p>Vistoria técnica e regularização de instalações conforme a NBR 5410, com laudo assinado por responsável técnico.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STATS BAND ================= -->
+<div class="stats-band" id="diferenciais">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat-item reveal"><div class="stat-num"><span class="counter" data-target="10">0</span>+</div><div class="stat-label">Anos de experiência</div></div>
+      <div class="stat-item reveal"><div class="stat-num"><span class="counter" data-target="1200">0</span>+</div><div class="stat-label">Instalações entregues</div></div>
+      <div class="stat-item reveal"><div class="stat-num"><span class="counter" data-target="4.9" data-decimal="1">0</span></div><div class="stat-label">Avaliação média dos clientes</div></div>
+      <div class="stat-item reveal"><div class="stat-num"><span class="counter" data-target="12">0</span></div><div class="stat-label">Meses de garantia em serviço</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ================= WHY ================= -->
+<section class="why">
+  <div class="wrap why-grid">
+    <div>
+      <span class="eyebrow reveal">Por que a Conceito</span>
+      <h2 class="reveal" style="margin-top:14px;color:var(--white);">Feito para durar,<br>não só para funcionar</h2>
+      <div class="why-list" style="margin-top:36px;">
+        <div class="why-item reveal">
+          <span class="why-num">01</span>
+          <div><h4>Equipe própria e certificada</h4><p>Sem terceirização — quem orça é quem executa, do início ao teste final.</p></div>
+        </div>
+        <div class="why-item reveal">
+          <span class="why-num">02</span>
+          <div><h4>Orçamento transparente</h4><p>Valor fechado antes de começar, sem taxas escondidas ou surpresas na nota.</p></div>
+        </div>
+        <div class="why-item reveal">
+          <span class="why-num">03</span>
+          <div><h4>Garantia real por escrito</h4><p>12 meses de garantia em peças e mão de obra, registrados em contrato simples.</p></div>
+        </div>
+        <div class="why-item reveal">
+          <span class="why-num">04</span>
+          <div><h4>Atendimento ágil</h4><p>Visita técnica agendada em até 48h e suporte direto pelo WhatsApp.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="why-visual reveal">
+      <div class="badge-hex">
+        <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="100,10 180,55 180,145 100,190 20,145 20,55" fill="none" stroke="#F3A83B" stroke-width="3"/>
+          <path d="M76 78 V122 M62 86 L90 114 M90 86 L62 114" stroke="#BFE6F2" stroke-width="4" stroke-linecap="round"/>
+          <polygon points="128,70 108,112 122,112 106,148 146,102 128,102" fill="#F3A83B"/>
+        </svg>
+      </div>
+      <div class="float-chip c1"><span class="dot"></span>Instalação concluída</div>
+      <div class="float-chip c2"><span class="dot"></span>220V · Padrão OK</div>
+      <div class="float-chip c3"><span class="dot"></span>Sistema testado</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PROCESS ================= -->
+<section class="process" id="processo">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Como trabalhamos</span>
+      <h2>Do diagnóstico à entrega,<br>em três etapas</h2>
+    </div>
+    <div class="process-track">
+      <div class="process-line"></div>
+      <div class="p-step reveal"><div class="p-circle">01</div><h4>Diagnóstico técnico</h4><p>Visita no local para avaliar a instalação, o ambiente e as necessidades reais do projeto.</p></div>
+      <div class="p-step reveal"><div class="p-circle">02</div><h4>Orçamento detalhado</h4><p>Proposta clara com prazos, materiais e valor fechado — sem letras miúdas.</p></div>
+      <div class="p-step reveal"><div class="p-circle">03</div><h4>Execução e testes</h4><p>Serviço executado pela nossa equipe e validado com testes de funcionamento e segurança.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIALS ================= -->
+<section class="testimonials" id="depoimentos">
+  <div class="wrap">
+    <div class="section-head reveal" style="margin-left:auto;margin-right:auto;text-align:center;">
+      <span class="eyebrow" style="justify-content:center;">Depoimentos</span>
+      <h2>Quem contratou, recomenda</h2>
+    </div>
+    <div class="t-slider">
+      <div class="t-slide active">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-quote">Instalaram três splits na minha casa em um dia só, sem sujeira e explicando cada etapa. Atendimento nota dez.</p>
+        <div class="t-author"><strong>Marina Alves</strong> — Residencial</div>
+      </div>
+      <div class="t-slide">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-quote">Refizeram todo o quadro elétrico da loja fora do horário de funcionamento. Profissionais e pontuais do início ao fim.</p>
+        <div class="t-author"><strong>Rodrigo Nunes</strong> — Comercial</div>
+      </div>
+      <div class="t-slide">
+        <div class="t-stars">★★★★★</div>
+        <p class="t-quote">Fazia manutenção com outra empresa e sempre voltava o mesmo problema. Com a Conceito, resolveram de vez.</p>
+        <div class="t-author"><strong>Fernanda Costa</strong> — Residencial</div>
+      </div>
+    </div>
+    <div class="t-dots" id="tDots"></div>
+  </div>
+</section>
+
+<!-- ================= COVERAGE ================= -->
+<section id="atendimento">
+  <div class="wrap coverage-grid">
+    <div class="reveal">
+      <span class="eyebrow">Área de atendimento</span>
+      <h2 style="margin-top:14px;color:var(--white);">Onde a Conceito<br>está presente</h2>
+      <p style="margin-top:18px;font-size:16px;max-width:420px;">Atendemos sua cidade e toda a região — substitua este texto pelas cidades reais atendidas pela sua empresa.</p>
+      <div class="coverage-list">
+        <span>Sua Cidade</span><span>Bairro A</span><span>Bairro B</span><span>Região Metropolitana</span>
+      </div>
+    </div>
+    <div class="coverage-map reveal">
+      <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+            <path d="M24 0H0V24" fill="none" stroke="rgba(159,179,200,.12)" stroke-width="1"/>
+          </pattern>
+        </defs>
+        <rect width="400" height="300" fill="url(#grid)"/>
+        <circle cx="200" cy="150" r="4" fill="#F3A83B"/>
+        <circle class="map-pulse" cx="200" cy="150" r="4" fill="none" stroke="#F3A83B" stroke-width="2"/>
+        <circle cx="140" cy="110" r="3" fill="#7EC8DE" opacity=".8"/>
+        <circle cx="260" cy="185" r="3" fill="#7EC8DE" opacity=".8"/>
+        <circle cx="230" cy="90" r="3" fill="#7EC8DE" opacity=".8"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="contact" id="contato">
+  <div class="wrap contact-grid">
+    <div class="contact-info reveal">
+      <span class="eyebrow">Contato</span>
+      <h2>Vamos resolver isso ainda essa semana</h2>
+      <p>Preencha o formulário ou fale direto pelo WhatsApp — nossa equipe responde em horário comercial.</p>
+      <div class="contact-channels">
+        <div class="channel">
+          <div class="channel-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+          <div><strong>(00) 00000-0000</strong><span>WhatsApp e ligações</span></div>
+        </div>
+        <div class="channel">
+          <div class="channel-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M4 4h16v16H4zM22 6l-10 7L2 6"/></svg></div>
+          <div><strong>contato@conceitoclima.com.br</strong><span>E-mail comercial</span></div>
+        </div>
+        <div class="channel">
+          <div class="channel-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 2a7 7 0 00-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 00-7-7zM12 12a3 3 0 100-6 3 3 0 000 6z"/></svg></div>
+          <div><strong>Sua Cidade e região</strong><span>Área de cobertura</span></div>
+        </div>
+      </div>
+    </div>
+
+    <form class="form-card reveal" id="contactForm">
+      <div class="form-row">
+        <div class="field"><label>Nome completo</label><input type="text" required placeholder="Como podemos te chamar?"></div>
+        <div class="field"><label>WhatsApp</label><input type="tel" required placeholder="(00) 00000-0000"></div>
+      </div>
+      <div class="field">
+        <label>Tipo de serviço</label>
+        <select required>
+          <option value="">Selecione uma opção</option>
+          <option>Instalação de ar-condicionado</option>
+          <option>Manutenção de ar-condicionado</option>
+          <option>Instalação elétrica</option>
+          <option>Padrão / quadro de distribuição</option>
+          <option>Outro</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Conte um pouco mais</label>
+        <textarea placeholder="Descreva o que você precisa, o ambiente e o prazo desejado."></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary submit-btn">
+        <span class="default-state">Enviar solicitação
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+        </span>
+        <span class="spinner"></span>
+      </button>
+      <div class="submit-success" id="submitSuccess">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M20 6L9 17l-5-5"/></svg>
+        Recebemos sua solicitação — em breve entraremos em contato.
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#top" class="logo">
+          <svg class="logo-hex" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <polygon points="50,4 90,27 90,73 50,96 10,73 10,27" fill="none" stroke="#F3A83B" stroke-width="5"/>
+            <path d="M32 40 V60 M24 45 L40 55 M40 45 L24 55" stroke="#BFE6F2" stroke-width="4.5" stroke-linecap="round"/>
+            <polygon points="60,32 47,58 57,58 50,74 70,48 58,48" fill="#F3A83B"/>
+          </svg>
+          <span class="logo-text"><span class="l1">Conceito</span><span class="l2">Climatização &amp; Elétrica</span></span>
+        </a>
+        <p>Climatização e instalações elétricas com padrão técnico, orçamento transparente e garantia real.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+          <a href="#" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M21 11.5a8.5 8.5 0 01-12.3 7.6L3 21l1.9-5.7A8.5 8.5 0 1121 11.5z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#diferenciais">Diferenciais</a></li>
+          <li><a href="#processo">Como trabalhamos</a></li>
+          <li><a href="#depoimentos">Depoimentos</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Serviços</h4>
+        <ul>
+          <li><a href="#servicos">Instalação de A/C</a></li>
+          <li><a href="#servicos">Manutenção</a></li>
+          <li><a href="#servicos">Instalação elétrica</a></li>
+          <li><a href="#servicos">Laudos técnicos</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Horário</h4>
+        <ul>
+          <li>Seg – Sex: 8h às 18h</li>
+          <li>Sábado: 8h às 13h</li>
+          <li>Plantão via WhatsApp</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Conceito Climatização e Elétrica. Todos os direitos reservados.</span>
+      <span>Site desenvolvido com foco em performance e conversão.</span>
+    </div>
+  </div>
+</footer>
+
+<a href="#" class="wa-float" id="waFloat" aria-label="Falar no WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.87.5 3.62 1.44 5.13L2 22l5.13-1.55a9.87 9.87 0 004.9 1.3h.01c5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm5.87 14.2c-.25.7-1.24 1.29-2.02 1.46-.55.11-1.26.2-3.65-.78-2.94-1.22-4.83-4.2-4.98-4.4-.14-.2-1.19-1.58-1.19-3.02 0-1.43.75-2.14 1.02-2.43.25-.28.55-.35.73-.35.19 0 .37 0 .53.01.17.01.4-.06.62.48.25.6.86 2.06.94 2.21.08.15.13.33.02.53-.1.2-.15.32-.3.5-.15.17-.31.39-.44.52-.15.15-.3.31-.13.6.17.3.76 1.26 1.64 2.04 1.13 1 2.08 1.32 2.38 1.47.3.15.47.13.65-.08.18-.2.75-.87.95-1.17.2-.3.4-.25.66-.15.27.1 1.71.81 2 .96.3.15.49.22.56.35.08.13.08.72-.17 1.42z"/></svg>
+</a>
+
+<script>
+(function(){
+  // ---- Header scroll state ----
+  const header = document.getElementById('site-header');
+  window.addEventListener('scroll',()=>{
+    header.classList.toggle('scrolled', window.scrollY > 40);
+    document.getElementById('waFloat').classList.toggle('show', window.scrollY > 500);
+  });
+
+  // ---- Mobile menu ----
+  const burger = document.getElementById('burger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  burger.addEventListener('click',()=>{
+    burger.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
+  mobileMenu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+    burger.classList.remove('open'); mobileMenu.classList.remove('open');
+  }));
+
+  // ---- Cursor glow in hero ----
+  const hero = document.querySelector('.hero');
+  const glow = document.getElementById('heroGlow');
+  hero.addEventListener('mousemove', e=>{
+    const r = hero.getBoundingClientRect();
+    glow.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+    glow.style.setProperty('--my', (e.clientY - r.top) + 'px');
+  });
+
+  // ---- Circuit canvas background ----
+  const canvas = document.getElementById('circuit-canvas');
+  const ctx = canvas.getContext('2d');
+  let w,h,nodes;
+  function resize(){
+    w = canvas.width = hero.offsetWidth;
+    h = canvas.height = hero.offsetHeight;
+    const count = Math.floor((w*h)/28000);
+    nodes = Array.from({length:count},()=>({
+      x:Math.random()*w, y:Math.random()*h,
+      vx:(Math.random()-.5)*.25, vy:(Math.random()-.5)*.25
+    }));
+  }
+  function tick(){
+    ctx.clearRect(0,0,w,h);
+    nodes.forEach(n=>{
+      n.x+=n.vx; n.y+=n.vy;
+      if(n.x<0||n.x>w) n.vx*=-1;
+      if(n.y<0||n.y>h) n.vy*=-1;
+    });
+    for(let i=0;i<nodes.length;i++){
+      for(let j=i+1;j<nodes.length;j++){
+        const dx=nodes[i].x-nodes[j].x, dy=nodes[i].y-nodes[j].y;
+        const dist=Math.sqrt(dx*dx+dy*dy);
+        if(dist<130){
+          ctx.strokeStyle = `rgba(159,179,200,${(1-dist/130)*0.18})`;
+          ctx.lineWidth=1;
+          ctx.beginPath(); ctx.moveTo(nodes[i].x,nodes[i].y); ctx.lineTo(nodes[j].x,nodes[j].y); ctx.stroke();
+        }
+      }
+      ctx.fillStyle='rgba(243,168,59,.45)';
+      ctx.beginPath(); ctx.arc(nodes[i].x,nodes[i].y,1.6,0,Math.PI*2); ctx.fill();
+    }
+    requestAnimationFrame(tick);
+  }
+  resize(); tick();
+  window.addEventListener('resize', resize);
+
+  // ---- Scroll reveal ----
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('in-view');
+        io.unobserve(entry.target);
+      }
+    });
+  },{threshold:0.15});
+  document.querySelectorAll('.reveal, .process-track').forEach(el=>io.observe(el));
+
+  // ---- Counters ----
+  const counters = document.querySelectorAll('.counter');
+  const cio = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(!entry.isIntersecting) return;
+      const el = entry.target;
+      const target = parseFloat(el.dataset.target);
+      const decimals = parseInt(el.dataset.decimal || '0');
+      const duration = 1600;
+      const start = performance.now();
+      function step(now){
+        const p = Math.min((now-start)/duration,1);
+        const eased = 1 - Math.pow(1-p,3);
+        const val = target*eased;
+        el.textContent = decimals ? val.toFixed(decimals) : Math.floor(val).toLocaleString('pt-BR');
+        if(p<1) requestAnimationFrame(step);
+        else el.textContent = decimals ? target.toFixed(decimals) : target.toLocaleString('pt-BR');
+      }
+      requestAnimationFrame(step);
+      cio.unobserve(el);
+    });
+  },{threshold:0.5});
+  counters.forEach(c=>cio.observe(c));
+
+  // ---- Service tabs ----
+  const tabs = document.querySelectorAll('.tab-btn');
+  const panels = document.querySelectorAll('.service-panel');
+  tabs.forEach(tab=>{
+    tab.addEventListener('click',()=>{
+      tabs.forEach(t=>t.classList.remove('active'));
+      tab.classList.add('active');
+      panels.forEach(p=>p.classList.toggle('active', p.dataset.panel === tab.dataset.tab));
+      panels.forEach(p=>{
+        if(p.dataset.panel === tab.dataset.tab){
+          p.querySelectorAll('.s-card').forEach((c,i)=>{
+            c.style.animation='none'; void c.offsetWidth;
+            c.style.opacity='0'; c.style.transform='translateY(20px)';
+            setTimeout(()=>{
+              c.style.transition='opacity .5s ease, transform .5s ease';
+              c.style.opacity='1'; c.style.transform='translateY(0)';
+            }, i*80);
+          });
+        }
+      });
+    });
+  });
+
+  // ---- Testimonial slider ----
+  const slides = document.querySelectorAll('.t-slide');
+  const dotsWrap = document.getElementById('tDots');
+  let current = 0, timer;
+  slides.forEach((_,i)=>{
+    const b = document.createElement('button');
+    if(i===0) b.classList.add('active');
+    b.addEventListener('click',()=>goTo(i));
+    dotsWrap.appendChild(b);
+  });
+  function goTo(i){
+    slides[current].classList.remove('active');
+    dotsWrap.children[current].classList.remove('active');
+    current = i;
+    slides[current].classList.add('active');
+    dotsWrap.children[current].classList.add('active');
+  }
+  function auto(){ timer = setInterval(()=>goTo((current+1)%slides.length), 5000); }
+  auto();
+  document.querySelector('.t-slider').addEventListener('mouseenter',()=>clearInterval(timer));
+  document.querySelector('.t-slider').addEventListener('mouseleave', auto);
+
+  // ---- Contact form ----
+  const form = document.getElementById('contactForm');
+  const submitBtn = form.querySelector('.submit-btn');
+  const successMsg = document.getElementById('submitSuccess');
+  form.addEventListener('submit', e=>{
+    e.preventDefault();
+    submitBtn.classList.add('loading');
+    successMsg.classList.remove('show');
+    setTimeout(()=>{
+      submitBtn.classList.remove('loading');
+      successMsg.classList.add('show');
+      form.reset();
+    },1400);
+  });
+})();
+</script>
+</body>
+</html>
